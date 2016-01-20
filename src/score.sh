@@ -2,11 +2,17 @@
 # bash script to redirect output of python script
 # to notify-send
 
-logopath=`pwd`;
-logopath="$logopath/logo.jpg"
+logopath=`pwd`
+logopath="${logopath//src/images/logo.jpg}"
+# echo "logopath : $logopath"
+
+echo "Enter url : "
+read ur
+echo "$ur" > url.txt
+
 while true
 do 
 	python score.py | while read OPT; do notify-send -i "$logopath" "$OPT"; done
 	sleep 20		
-	#generate notif every 20 sec
+	#generate notification every 20 sec
 done
