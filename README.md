@@ -9,4 +9,4 @@ and run the script using
 ./score.sh
 
 # screenshot
-![alt tag](http://github.com/sourabh14/live-score/images/screenshot.png)
+![alt tag](https://github.com/sourabh14/live-score/blob/master/images/screenshot.png)
