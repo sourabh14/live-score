@@ -6,4 +6,4 @@ Go to the folder location and run the script using
 ./score.sh
 
 # screenshot
-![alt tag](http://github.com/sourabh14/live-score/screenshot.png)
+![alt tag](https://github.com/sourabh14/live-score/blob/master/screenshot.png)
