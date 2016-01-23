@@ -13,6 +13,6 @@ echo "$ur" > url.txt
 while true
 do 
 	python score.py | while read OPT; do notify-send -i "$logopath" "$OPT"; done
-	sleep 20		
-	#generate notification every 20 sec
+	sleep 30	
+	#generate notification every 30 sec
 done
