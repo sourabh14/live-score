@@ -1,7 +1,7 @@
 #!/usr/bin/python
-
 from Tkinter import *
 import tkMessageBox
+from urllib2 import Request, urlopen, URLError, HTTPError
 
 class GuiWindow:
 
@@ -68,7 +68,7 @@ class GuiWindow:
 		# buttons
 		self.b1 = Button(self.root, 
 					 text="Quit",
-					 command=self.root.quit)
+					 command=self.quitWindow)
 		self.b1.pack()
 		self.b1.place(x=15, y=260)
 
@@ -83,10 +83,22 @@ class GuiWindow:
 
 	def getUrl(self):
 		url = self.textbox1.get()
-		if url:
-			return url 
+		try: 
+		    response = urlopen(url)
+		    return url
+		except HTTPError as e:
+		    tkMessageBox.showerror("URL Error", "The server couldn\'t fulfill the request.")
+		    return -1
+		except URLError as e:
+		    tkMessageBox.showerror("URL Error", "Failed to reach a server.")
+		    return -1
+		except ValueError:
+			tkMessageBox.showerror("URL Error", "Use valid full qualified domain name")
+			return -1
+		    
+						 
 		else:				
-			tkMessageBox.showerror("Error", "URL is empty")
+			tkMessageBox.showerror("URL Error", "URL is empty")
 			return -1
 		
 	def getInterval(self):
@@ -95,21 +107,22 @@ class GuiWindow:
 			if (intv >= 20):
 				return intv 
 			else:				
-				tkMessageBox.showerror("Error", "Interval should be greater than or equal to 20 sec")
+				tkMessageBox.showerror("Input Error", "Interval should be greater than or equal to 20 sec")
 				return -1
 		except ValueError:
-			tkMessageBox.showerror("Error", "Invalid Interval input")
+			tkMessageBox.showerror("Input Error", "Invalid Interval input")
 			return -1
 
 	def getNotifType(self):
 		ntype = int(self.notifType.get())
 		if (ntype == 0):
-			tkMessageBox.showerror("Error", "Notification type not selected")
+			tkMessageBox.showerror("Input Error", "Notification type not selected")
 			return -1
 		else:
 			return ntype	
 
 	def retrieveInput(self):
+		self.startLiveScore = True
 		self.url = self.getUrl()
 		if (self.url == -1):
 			return
@@ -123,3 +136,7 @@ class GuiWindow:
 			return
 
 		self.root.destroy()	
+
+	def quitWindow(self):
+		self.startLiveScore = False
+		self.root.destroy()

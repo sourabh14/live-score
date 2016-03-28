@@ -4,9 +4,14 @@ import re
 import time
 import urllib2
 import os
+import sys
 
-# create GuiWindow object
+# create GuiWindow 
 windowinput = GuiWindow()
+
+# check if quit option is selected
+if (not windowinput.startLiveScore):
+	sys.exit(0)
 
 # fetch input
 url = windowinput.url
@@ -15,9 +20,9 @@ notifOption = windowinput.notifChoice
 
 # start live score
 print "url : ", url
-print "interval : ", interval
-print "selection : ", notifOption
-print "\nrunning live-score...\n\n"
+print "interval : ", interval, " sec"
+print "option : ", notifOption
+print "\nrunning live-score...\nTo stop press Ctrl - z..  "
 
 
 def fetch_title(html, begin, end) :
@@ -67,8 +72,6 @@ elif (windowinput.notifChoice == 2):
 			prevRuns = runs
 			command = notifCmd + "\"" + title + "\""
 			os.system(command)
-		else:
-			print "runs not scored.."	
 
 		# give delay	
 		time.sleep(interval) 
@@ -91,8 +94,6 @@ else:
 			wkts = prevWkts
 			command = notifCmd + "\"" + title + "\""
 			os.system(command)
-		else:
-			print "wkts not fallen.."	
 
 		# give delay	
 		time.sleep(interval) 					
