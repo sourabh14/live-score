@@ -4,6 +4,7 @@ live-score contains python script, to fetch live cricket match scores and show i
 # Prerequisites
 -Linux OS
 -python 2.7.6 and above
+-python tkinter module (you can install it by: sudo apt-get install python-tk)
 
 # Installation
 Download repo zip file from github page : https://github.com/sourabh14/live-score

@@ -1,12 +1,22 @@
 # live-score
-live-score contains simple shell and python script, to fetch live match scores and show it as a notification on desktop. The url of the sports website is given as input to the python script, whose webpage title is fetched. The shell script then uses notify-send utility of linux to display the notification. The script runs infinitely and displays the notification in every 20 seconds.
+live-score contains python script, to fetch live cricket match scores and show it as a notification on desktop screen. It supports user defined settings for notification popup, such as after every interval, after runs are scored, and after wickets fall. 
 
-# how to execute
-Go to the folder location 
-"/path-to-live-score/src/"
+# Prerequisites
+-Linux OS
+-python 2.7.6 and above
 
-and run the script using
-./score.sh
+# Installation
+Download repo zip file from github page : https://github.com/sourabh14/live-score
+and extract.
 
-# screenshot
-![alt tag](http://github.com/sourabh14/live-score/images/screenshot.png)
+# Usage
+Go to the script location 
+	$ cd "/path-to-live-score/src/"
+
+run the script using
+	$ python live-score
+
+# Screenshots
+![alt tag](https://github.com/sourabh14/live-score/blob/master/images/live-score-window.png)
+
+![alt tag](https://github.com/sourabh14/live-score/blob/master/images/live-score-notification.png)
